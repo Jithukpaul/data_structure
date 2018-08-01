@@ -12,7 +12,7 @@ public:
 		cout<<"a*b= "<<a*b; //override then it returns an error
 	}//to ignore virtualization and call bse class functn call "A::ans(a,b);"
 };
-int main()//if we try to call method using A's ref object refering to B call goes to B,
+int main()//if we try to call method using A's ref object refering to B call goes to B,because of virtual function
 {
 	B obj;
 	A &obj1=obj;
