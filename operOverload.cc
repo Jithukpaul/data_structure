@@ -1,25 +1,35 @@
 #include<iostream>
 using namespace std;
-class stud{
-	string name;
-	int age;
+class Dist{
+	int km;
+	int m;
 public:
-	stud(string name,int age):name(name),age(age){}
-	void show(){cout<<name<<" "<<age<<endl;}
-	void operator ++(){age++;}			//prefix
-	void operator ++(int){age++;}		//postfix
-	friend std::ostream &operator << (std::ostream &out, const stud &d)//Overoading <<
+	Dist(){}
+	Dist(int km,int m):km(km),m(m){}
+	Dist operator +(Dist &b){
+		Dist c;
+		c.km=km+b.km;
+		c.m=m+b.m;
+		return c;
+	}
+	void operator ++(){km++;}			//prefix
+	void operator ++(int){km++;}		//postfix
+	friend std::ostream &operator << (std::ostream &out, const Dist &d)//Overoading <<
 	{
-		out << d.name <<" "<<d.age<<endl;
+		out << d.km <<" "<<d.m<<endl;
 		return out;
 	}
 };
 int main(int argc, char const *argv[])
 {
-	stud a("s1",21);
+	Dist a(10,21);
+	cout<<"Value of a: "<<a;
 	++a;
-	cout << a;
+	cout << "Preincrementing a: "<<a;
 	a++;
-	cout << a;	
+	cout << "Postincrementing a: "<<a;	
+	Dist b(20,32);cout<<"Value of b: "<<b;
+	Dist c= a+b;
+	cout<<"a+b= "<<c;
 	return 0;
 }
